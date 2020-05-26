@@ -1,0 +1,39 @@
+<!-- style="width: 300px;" -->
+
+<nz-card
+  class="grid-card"
+  [nzCover]="coverTemplate"
+  [nzActions]="[actionEllipsis]"
+>
+  <nz-card-meta
+    [nzTitle]="bookInfo?.best_book?.title"
+    [nzDescription]="description"
+  ></nz-card-meta>
+</nz-card>
+<ng-template #extraTemplate>
+  <a>More</a>
+</ng-template>
+<ng-template #description>
+  <nz-rate
+    nzDisabled
+    [ngModel]="bookInfo?.average_rating"
+    nzAllowHalf
+  ></nz-rate>
+  {{ bookInfo?.average_rating }}
+
+  <br />
+  <br />
+  Author:
+  {{ bookInfo?.best_book?.author?.name }}
+</ng-template>
+
+<ng-template #coverTemplate>
+  <img
+    class="grid-img"
+    [alt]="bookInfo?.best_book?.title"
+    [src]="bookInfo?.best_book?.image_url"
+  />
+</ng-template>
+<ng-template #actionEllipsis>
+  <i nz-icon nzType="ellipsis"></i>
+</ng-template>
