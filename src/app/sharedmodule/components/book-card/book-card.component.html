@@ -1,39 +1,41 @@
-<!-- style="width: 300px;" -->
+<div class="bg-white book-card ribbon-parent">
+  <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+    add to list
+    <i nz-icon nzType="down"></i>
+  </a>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item>Read</li>
+      <li nz-menu-item>Currently Reading</li>
+      <li nz-menu-item>Read It Later</li>
+    </ul>
+  </nz-dropdown-menu>
 
-<nz-card
-  class="grid-card"
-  [nzCover]="coverTemplate"
-  [nzActions]="[actionEllipsis]"
->
-  <nz-card-meta
-    [nzTitle]="bookInfo?.best_book?.title"
-    [nzDescription]="description"
-  ></nz-card-meta>
-</nz-card>
-<ng-template #extraTemplate>
-  <a>More</a>
-</ng-template>
-<ng-template #description>
-  <nz-rate
-    nzDisabled
-    [ngModel]="bookInfo?.average_rating"
-    nzAllowHalf
-  ></nz-rate>
-  {{ bookInfo?.average_rating }}
+  <div class="ribbon">Read</div>
 
-  <br />
-  <br />
-  Author:
-  {{ bookInfo?.best_book?.author?.name }}
-</ng-template>
-
-<ng-template #coverTemplate>
-  <img
-    class="grid-img"
-    [alt]="bookInfo?.best_book?.title"
-    [src]="bookInfo?.best_book?.image_url"
-  />
-</ng-template>
-<ng-template #actionEllipsis>
-  <i nz-icon nzType="ellipsis"></i>
-</ng-template>
+  <div class="md:flex grid-card p-6">
+    <img
+      class="h-16 w-16 md:h-24 md:w-24 mx-auto md:mx-0 md:mr-6"
+      [src]="bookInfo?.best_book?.image_url"
+    />
+    <div class="text-center md:text-left" style="z-index: 1;">
+      <h2 class="text-lg">
+        {{ bookInfo?.best_book?.title }}
+      </h2>
+    </div>
+  </div>
+  <div class="mx-auto md:mx-0 md:mr-6 pl-6">
+    <div class="text-gray-600">
+      Rating:
+      <nz-rate
+        nzDisabled
+        [ngModel]="bookInfo?.average_rating"
+        nzAllowHalf
+      ></nz-rate>
+      {{ bookInfo?.average_rating }}
+    </div>
+    <div class="text-gray-600 pt-6">
+      Author: {{ bookInfo?.best_book?.author?.name }}
+    </div>
+  </div>
+</div>

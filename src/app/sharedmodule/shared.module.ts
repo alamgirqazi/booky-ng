@@ -7,6 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { BookCardComponent } from "./components/book-card/book-card.component";
 import { NzRateModule } from "ng-zorro-antd/rate";
+import { NzDropDownModule } from "ng-zorro-antd/dropdown";
 
 @NgModule({
   declarations: [BookCardComponent],
@@ -17,6 +18,7 @@ import { NzRateModule } from "ng-zorro-antd/rate";
     NzMenuModule,
     NzCardModule,
     NzRateModule,
+    NzDropDownModule,
   ],
   exports: [BookCardComponent],
 })
