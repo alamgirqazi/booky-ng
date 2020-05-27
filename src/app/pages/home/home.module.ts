@@ -13,9 +13,20 @@ import { NzInputModule } from "ng-zorro-antd/input";
 import { FormsModule } from "@angular/forms";
 import { NzButtonModule } from "ng-zorro-antd/button";
 import { SharedModule } from "src/app/sharedmodule/shared.module";
+import { HomeBoardComponent } from "./home-board/home-board.component";
+import { HomeAnalyticsComponent } from "./home-analytics/home-analytics.component";
+import { HomeSettingsComponent } from "./home-settings/home-settings.component";
+import { HomeBooksComponent } from "./home-books/home-books.component";
 
 @NgModule({
-  declarations: [HomeComponent, HomeSearchComponent],
+  declarations: [
+    HomeComponent,
+    HomeSearchComponent,
+    HomeBoardComponent,
+    HomeAnalyticsComponent,
+    HomeSettingsComponent,
+    HomeBooksComponent,
+  ],
   imports: [
     CommonModule,
     NzLayoutModule,

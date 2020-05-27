@@ -8,8 +8,8 @@
     [nzTrigger]="null"
   >
     <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
-        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo" />
+      <a routerLink="/">
+        <img src="assets/book-shelf-48.png" alt="logo" />
         <h1>Booky</h1>
       </a>
     </div>
@@ -21,20 +21,20 @@
     >
       <li nz-submenu nzOpen nzTitle="Home" nzIcon="dashboard">
         <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/home">Find Books</a>
+          <li nz-menu-item nzMatchRouterExact>
+            <a routerLink="/home/search">Find Books</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Books</a>
+          <li nz-menu-item nzMatchRouterExact>
+            <a routerLink="/home/books">Books</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Analytics</a>
+          <li nz-menu-item nzMatchRouterExact>
+            <a routerLink="/home/analytics">Analytics</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Board</a>
+          <li nz-menu-item nzMatchRouterExact>
+            <a routerLink="/home/board">Board</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Settings</a>
+          <li nz-menu-item nzMatchRouterExact>
+            <a routerLink="/home/settings">Settings</a>
           </li>
         </ul>
       </li>

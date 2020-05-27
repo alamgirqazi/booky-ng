@@ -19,9 +19,9 @@
       [src]="bookInfo?.best_book?.image_url"
     />
     <div class="text-center md:text-left" style="z-index: 1;">
-      <h2 class="text-lg">
+      <h4 class="text-lg">
         {{ bookInfo?.best_book?.title }}
-      </h2>
+      </h4>
     </div>
   </div>
   <div class="mx-auto md:mx-0 md:mr-6 pl-6">
@@ -34,8 +34,11 @@
       ></nz-rate>
       {{ bookInfo?.average_rating }}
     </div>
-    <div class="text-gray-600 pt-6">
-      Author: {{ bookInfo?.best_book?.author?.name }}
+    <div class="pt-6">
+      <strong>Author: </strong>
+      <span class="text-gray-600">
+        {{ bookInfo?.best_book?.author?.name }}</span
+      >
     </div>
   </div>
 </div>
