@@ -10,4 +10,5 @@ export class HomeComponent implements OnInit {
   isCollapsed = false;
 
   ngOnInit(): void {}
+  logout() {}
 }

@@ -17,6 +17,7 @@ import { HomeBoardComponent } from "./home-board/home-board.component";
 import { HomeAnalyticsComponent } from "./home-analytics/home-analytics.component";
 import { HomeSettingsComponent } from "./home-settings/home-settings.component";
 import { HomeBooksComponent } from "./home-books/home-books.component";
+import { DragDropModule } from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { HomeBooksComponent } from "./home-books/home-books.component";
     NzLayoutModule,
     NzButtonModule,
     FormsModule,
+    DragDropModule,
     NzMenuModule,
     NzGridModule,
     NzInputModule,

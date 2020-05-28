@@ -1,5 +1,52 @@
-<div nz-row [nzGutter]="16">
-  <div nz-col class="gutter-row" [nzSpan]="24">
-    I will display BOARD here
+<!-- <nz-switch
+  [(ngModel)="check"
+  nzCheckedChildren="1"
+  nzUnCheckedChildren="0"
+></nz-switch> -->
+
+<div cdkDropListGroup nz-row [nzGutter]="16">
+  <div class="example-container read-it-later" nz-col [nzSpan]="7">
+    <h2>Read it later</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="todo"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+  </div>
+
+  <div class="example-container currently-reading" nz-col [nzSpan]="7">
+    <h2>Currently Reading</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="done"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let item of done" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+  </div>
+
+  <div class="example-container done" nz-col [nzSpan]="7">
+    <h2>Done</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="done"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let item of read" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
   </div>
 </div>
