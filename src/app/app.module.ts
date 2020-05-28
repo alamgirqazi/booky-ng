@@ -4,7 +4,6 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { NzLayoutModule } from "ng-zorro-antd/layout";
-import { NzMenuModule } from "ng-zorro-antd/menu";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -18,6 +17,8 @@ import { SignupComponent } from "./pages/home/signup/signup.component";
 import { NzInputModule } from "ng-zorro-antd/input";
 import { NzSpinModule } from "ng-zorro-antd/spin";
 import { NzFormModule } from "ng-zorro-antd/form";
+import { NzButtonModule } from "ng-zorro-antd/button";
+import { NzIconModule } from "ng-zorro-antd/icon";
 
 registerLocaleData(en);
 
@@ -35,8 +36,11 @@ registerLocaleData(en);
     ReactiveFormsModule,
     NzLayoutModule,
     NzInputModule,
+    NzButtonModule,
+    NzIconModule,
     NzFormModule,
     NzSpinModule,
+
     HttpClientModule,
     BrowserAnimationsModule,
   ],
