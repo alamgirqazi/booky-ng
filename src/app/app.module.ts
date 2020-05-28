@@ -13,11 +13,18 @@ import { en_US } from "ng-zorro-antd/i18n";
 import { registerLocaleData } from "@angular/common";
 import en from "@angular/common/locales/en";
 import { LandingPageComponent } from "./pages/home/landingpage/landingpage.component";
+import { LoginComponent } from "./pages/home/login/login.component";
+import { SignupComponent } from "./pages/home/signup/signup.component";
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [AppComponent, LandingPageComponent],
+  declarations: [
+    AppComponent,
+    LandingPageComponent,
+    LoginComponent,
+    SignupComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
