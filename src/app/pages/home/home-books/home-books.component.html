@@ -34,7 +34,11 @@
     </shared-book-card>
   </div>
 </div>
-<div nz-row [nzGutter]="16" *ngIf="displaybookResults.length === 0">
+<div
+  nz-row
+  [nzGutter]="16"
+  *ngIf="displaybookResults.length === 0 && bookResults?.length"
+>
   <div nz-col class="gutter-row" [nzSpan]="4"></div>
   <div nz-col class="gutter-row" [nzSpan]="16">
     <nz-result
