@@ -42,7 +42,6 @@ registerLocaleData(en);
     NzMessageModule,
     NzFormModule,
     NzSpinModule,
-
     HttpClientModule,
     BrowserAnimationsModule,
   ],

@@ -1,5 +1,36 @@
 <div nz-row [nzGutter]="16">
   <div nz-col class="gutter-row" [nzSpan]="24">
-    I will display Books here
+    <nz-radio-group
+      name="filter"
+      [(ngModel)]="selectedType"
+      (ngModelChange)="filterChanged($event)"
+      nzButtonStyle="solid"
+    >
+      <!-- [nzStyle]="{ backgroundColor: '#52c41a' }" -->
+
+      <nz-badge [nzCount]="bookResults?.length">
+        <label nz-radio-button nzValue="All">All</label>
+      </nz-badge>
+      <label nz-radio-button nzValue="currently-reading"
+        >Currently Reading</label
+      >
+      <label nz-radio-button nzValue="read">Read</label>
+      <label nz-radio-button nzValue="read-it-later">Read It Later</label>
+    </nz-radio-group>
+  </div>
+  <br />
+  <br />
+  <br />
+</div>
+
+<div class="books-container">
+  <div *ngFor="let item of displaybookResults; let i = index">
+    <shared-book-card
+      (output)="updateList()"
+      [bookInfo]="item"
+      [userDisplay]="true"
+      [showRibbon]="true"
+    >
+    </shared-book-card>
   </div>
 </div>

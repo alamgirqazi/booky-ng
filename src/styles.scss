@@ -3,3 +3,28 @@
 .input-error {
   box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.5);
 }
+
+.ant-radio-group .ant-badge-count {
+  z-index: 2;
+}
+
+.default-ribbon,
+.ribbon:before,
+.ribbon:after {
+  background: #d86e5e;
+}
+.blue-ribbon,
+.blue-ribbon.ribbon:before,
+.blue-ribbon.ribbon:after {
+  background: #21afdd !important;
+}
+.green-ribbon,
+.green-ribbon.ribbon:before,
+.green-ribbon.ribbon:after {
+  background: #52c41a !important;
+}
+.orange-ribbon,
+.orange-ribbon.ribbon:before,
+.orange-ribbon.ribbon:after {
+  background: orange !important;
+}

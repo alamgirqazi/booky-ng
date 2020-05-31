@@ -1,26 +1,69 @@
 <div class="bg-white book-card ribbon-parent">
   <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
-    add to list
+    add to
     <i nz-icon nzType="down"></i>
   </a>
   <nz-dropdown-menu #menu="nzDropdownMenu">
     <ul nz-menu>
-      <li nz-menu-item>Read</li>
-      <li nz-menu-item>Currently Reading</li>
-      <li nz-menu-item>Read It Later</li>
+      <li
+        nz-menu-item
+        (click)="addBookToUser('read')"
+        *ngIf="
+          (userDisplay && bookInfo?.reading_status !== 'read') || !userDisplay
+        "
+      >
+        Read
+      </li>
+      <li
+        nz-menu-item
+        (click)="addBookToUser('currently-reading')"
+        *ngIf="
+          (userDisplay && bookInfo?.reading_status !== 'currently-reading') ||
+          !userDisplay
+        "
+      >
+        Currently Reading
+      </li>
+      <li
+        nz-menu-item
+        (click)="addBookToUser('read-it-later')"
+        *ngIf="
+          (userDisplay && bookInfo?.reading_status !== 'read-it-later') ||
+          !userDisplay
+        "
+      >
+        Read It Later
+      </li>
     </ul>
   </nz-dropdown-menu>
 
-  <div class="ribbon">Read</div>
+  <div
+    class="ribbon"
+    *ngIf="showRibbon"
+    [ngClass]="{
+      'blue-ribbon': bookInfo?.reading_status === 'currently-reading',
+      'orange-ribbon': bookInfo?.reading_status === 'read-it-later',
+      'green-ribbon': bookInfo?.reading_status === 'read'
+    }"
+  >
+    <span *ngIf="bookInfo?.reading_status === 'currently-reading'">
+      Currently Reading
+    </span>
+    <span *ngIf="bookInfo?.reading_status === 'read-it-later'">
+      Read It Later
+    </span>
+    <span *ngIf="bookInfo?.reading_status === 'read'"> Read </span>
+  </div>
 
   <div class="md:flex grid-card p-6">
     <img
       class="h-16 w-16 md:h-24 md:w-24 mx-auto md:mx-0 md:mr-6"
-      [src]="bookInfo?.best_book?.image_url"
+      [src]="bookInfo?.best_book?.image_url || bookInfo?.image_url"
     />
     <div class="text-center md:text-left" style="z-index: 1;">
       <h4 class="text-lg">
-        {{ bookInfo?.best_book?.title }}
+        <span> {{ bookInfo?.best_book?.title || bookInfo?.title }} </span>
+        <!-- <span *ngIf="!goodreadData"> {{ bookInfo?.title }} </span> -->
       </h4>
     </div>
   </div>
@@ -29,15 +72,17 @@
       Rating:
       <nz-rate
         nzDisabled
-        [ngModel]="bookInfo?.average_rating"
+        [ngModel]="
+          bookInfo?.average_rating || bookInfo?.goodreads_average_rating
+        "
         nzAllowHalf
       ></nz-rate>
-      {{ bookInfo?.average_rating }}
+      {{ bookInfo?.average_rating || bookInfo?.goodreads_average_rating }}
     </div>
     <div class="pt-6">
       <strong>Author: </strong>
       <span class="text-gray-600">
-        {{ bookInfo?.best_book?.author?.name }}</span
+        {{ bookInfo?.best_book?.author?.name || bookInfo?.author }}</span
       >
     </div>
   </div>

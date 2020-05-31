@@ -11,7 +11,7 @@ export class BooksService {
 
   public findBookByTitle(title): Observable<any> {
     const params = new HttpParams().append("query", title);
-    const url = CoreConfig.getPath() + `/books`;
+    const url = CoreConfig.getPath() + `/books-find`;
     return this.http.get(url, { params });
   }
 }
