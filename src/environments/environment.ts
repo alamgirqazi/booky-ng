@@ -4,9 +4,8 @@
 
 export const environment = {
   production: false,
-  path: "https://booky-backend.netlify.app/.netlify/functions",
-
-  // path: ".netlify/functions",
+  // path: "https://booky-backend.netlify.app/.netlify/functions",
+  path: ".netlify/functions",
 };
 
 /*

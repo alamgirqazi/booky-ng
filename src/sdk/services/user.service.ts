@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { CoreConfig } from "../core.config";
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 
 interface LoginBody {
   email: string;
@@ -21,6 +21,7 @@ export class UserService {
 
   public userLogin(body: LoginBody): Observable<any> {
     const url = CoreConfig.getPath() + `/users-login`;
+
     return this.http.post(url, body);
   }
 

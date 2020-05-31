@@ -8,6 +8,8 @@ import {
 import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { UserService } from "src/sdk/services/user.service";
+import { HelperService } from "src/sdk/services/helper.service";
+import { AuthService } from "src/sdk/services/auth.service";
 
 @Component({
   selector: "app-login",
@@ -18,7 +20,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private fb: FormBuilder
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private helperService: HelperService
   ) {}
   user = {
     username: null,
@@ -66,12 +70,11 @@ export class LoginComponent implements OnInit {
       const body = this.loginForm.value;
       this.userService.userLogin(body).subscribe(
         (response) => {
-          const tokenData = response.token;
-          // this.authService.saveToken(response.tokenId, tokenData);
+          const token = response.token;
+          this.authService.saveToken(token);
+          // this.router.navigateByUrl("home/books");
 
-          this.router.navigateByUrl("home/books");
-
-          this.showToast("Log in successfully");
+          this.helperService.createMessage("success", "Login successful!");
 
           this.loading = false;
         },
@@ -80,19 +83,11 @@ export class LoginComponent implements OnInit {
           const errorMsg =
             error?.error?.message ||
             "Could not login. Please check your internet";
-          this.showToast(errorMsg, "error");
+          this.helperService.createMessage("error", errorMsg);
 
           this.loading = false;
         }
       );
-    }
-  }
-
-  showToast(msg, status = "success") {
-    if (status == "success") {
-      //   this.toastrService.success(msg, "Success");
-      // } else {
-      //   this.toastrService.danger(msg, "Error");
     }
   }
 }

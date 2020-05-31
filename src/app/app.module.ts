@@ -19,6 +19,7 @@ import { NzSpinModule } from "ng-zorro-antd/spin";
 import { NzFormModule } from "ng-zorro-antd/form";
 import { NzButtonModule } from "ng-zorro-antd/button";
 import { NzIconModule } from "ng-zorro-antd/icon";
+import { NzMessageModule } from "ng-zorro-antd/message";
 
 registerLocaleData(en);
 
@@ -38,6 +39,7 @@ registerLocaleData(en);
     NzInputModule,
     NzButtonModule,
     NzIconModule,
+    NzMessageModule,
     NzFormModule,
     NzSpinModule,
 
