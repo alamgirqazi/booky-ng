@@ -1,4 +1,4 @@
-<div nz-row [nzGutter]="16">
+<div nz-row [nzGutter]="16" *ngIf="bookResults?.length">
   <div nz-col class="gutter-row" [nzSpan]="24">
     <nz-radio-group
       name="filter"
@@ -33,4 +33,37 @@
     >
     </shared-book-card>
   </div>
+</div>
+<div nz-row [nzGutter]="16" *ngIf="displaybookResults.length === 0">
+  <div nz-col class="gutter-row" [nzSpan]="4"></div>
+  <div nz-col class="gutter-row" [nzSpan]="16">
+    <nz-result
+      [nzIcon]="'frown-twotone'"
+      [nzTitle]="'You do not have any book in this category!'"
+    >
+      <!-- <div nz-result-extra>
+      <button nz-button nzType="primary">Next</button>
+    </div> -->
+    </nz-result>
+  </div>
+  <div nz-col class="gutter-row" [nzSpan]="4"></div>
+</div>
+
+<div nz-row [nzGutter]="16" *ngIf="!loading && bookResults.length === 0">
+  <div nz-col class="gutter-row" [nzSpan]="4"></div>
+  <div nz-col class="gutter-row" [nzSpan]="16">
+    <nz-result
+      [nzIcon]="'smile-twotone'"
+      [nzTitle]="
+        'Welcome to Booky! We are excited to have you here. Lets get started by browsing books from the booky search engine. '
+      "
+    >
+      <div nz-result-extra>
+        <button nz-button routerLink="/home/search" nzType="primary">
+          Let's Start!
+        </button>
+      </div>
+    </nz-result>
+  </div>
+  <div nz-col class="gutter-row" [nzSpan]="4"></div>
 </div>

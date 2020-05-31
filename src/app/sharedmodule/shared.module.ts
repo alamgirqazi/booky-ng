@@ -12,6 +12,7 @@ import { NzSwitchModule } from "ng-zorro-antd/switch";
 import { NzAvatarModule } from "ng-zorro-antd/avatar";
 import { NzRadioModule } from "ng-zorro-antd/radio";
 import { NzBadgeModule } from "ng-zorro-antd/badge";
+import { NzResultModule } from "ng-zorro-antd/result";
 
 @NgModule({
   declarations: [BookCardComponent],
@@ -27,6 +28,7 @@ import { NzBadgeModule } from "ng-zorro-antd/badge";
     NzDropDownModule,
     NzAvatarModule,
     NzBadgeModule,
+    NzResultModule,
   ],
   exports: [
     BookCardComponent,
@@ -34,6 +36,7 @@ import { NzBadgeModule } from "ng-zorro-antd/badge";
     NzAvatarModule,
     NzRadioModule,
     NzBadgeModule,
+    NzResultModule,
   ],
 })
 export class SharedModule {}
