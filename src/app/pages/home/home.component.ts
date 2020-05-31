@@ -16,5 +16,7 @@ export class HomeComponent implements OnInit {
     console.log("token", token);
     this.username = token.email;
   }
-  logout() {}
+  logout() {
+    this.authService.logout();
+  }
 }

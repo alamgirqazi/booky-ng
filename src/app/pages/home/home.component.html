@@ -66,7 +66,7 @@
       </li>
       <li nz-submenu nzOpen nzTitle="Options" nzIcon="logout">
         <ul>
-          <li nz-menu-item routerLink="/login">
+          <li nz-menu-item (click)="logout()">
             <a>Log out</a>
           </li>
         </ul>
@@ -91,7 +91,7 @@
           </a>
           <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu>
-              <li nz-menu-item>Logout</li>
+              <li (click)="logout()" nz-menu-item>Logout</li>
             </ul>
           </nz-dropdown-menu>
         </span>

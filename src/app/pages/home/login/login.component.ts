@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
         (response) => {
           const token = response.token;
           this.authService.saveToken(token);
-          // this.router.navigateByUrl("home/books");
+          this.router.navigateByUrl("home/books");
 
           this.helperService.createMessage("success", "Login successful!");
 
