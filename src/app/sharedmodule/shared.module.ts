@@ -9,6 +9,7 @@ import { BookCardComponent } from "./components/book-card/book-card.component";
 import { NzRateModule } from "ng-zorro-antd/rate";
 import { NzDropDownModule } from "ng-zorro-antd/dropdown";
 import { NzSwitchModule } from "ng-zorro-antd/switch";
+import { NzAvatarModule } from "ng-zorro-antd/avatar";
 
 @NgModule({
   declarations: [BookCardComponent],
@@ -21,7 +22,8 @@ import { NzSwitchModule } from "ng-zorro-antd/switch";
     NzSwitchModule,
     NzRateModule,
     NzDropDownModule,
+    NzAvatarModule,
   ],
-  exports: [BookCardComponent],
+  exports: [BookCardComponent, NzDropDownModule, NzAvatarModule],
 })
 export class SharedModule {}

@@ -15,17 +15,13 @@ export class AuthService {
   }
 
   public getdecodedAccessTokenId() {
-    const token = localStorage.getItem("b-token");
     try {
-      return this.decodeToken(token);
+      const token = localStorage.getItem("b-token");
+
+      return decode(token).data;
     } catch (ex) {
       console.log("ex", ex);
     }
-  }
-
-  public decodeToken(token: string) {
-    const { payload } = decode(token);
-    return payload;
   }
 
   public saveToken(token) {

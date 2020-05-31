@@ -83,6 +83,18 @@
             [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
           ></i>
         </span>
+        <span class="avatar-dropdown">
+          <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+            {{ username }}
+            <nz-avatar [nzSize]="'medium'" nzIcon="user"></nz-avatar>
+            <!-- <i nz-icon nzType="down"></i> -->
+          </a>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item>Logout</li>
+            </ul>
+          </nz-dropdown-menu>
+        </span>
       </div>
     </nz-header>
     <nz-content>
