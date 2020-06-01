@@ -23,13 +23,29 @@ export class BookCardComponent implements OnInit {
   @Output() output = new EventEmitter();
 
   loading = false;
+  reading_finish_date;
+  finishDateVisible = false;
+  selectedBookStatus: bookStatusTypes;
+  finishDateLoading = false;
+
   ngOnInit(): void {}
 
   addBookToUser(type: bookStatusTypes) {
+    this.selectedBookStatus = type;
+    this.reading_finish_date = null;
+
+    if (type === "read") {
+      this.openFinishDateModal();
+    } else {
+      this.createApiData();
+    }
+  }
+
+  createApiData() {
     const token = this.authService.getdecodedAccessTokenId();
     const user_id = token._id;
 
-    const publications = {
+    const published = {
       original_publication_day: this.bookInfo?.original_publication_day?._,
       original_publication_month: this.bookInfo?.original_publication_month?._,
       original_publication_year: this.bookInfo?.original_publication_year?._,
@@ -38,8 +54,9 @@ export class BookCardComponent implements OnInit {
     const obj = {
       title: this.bookInfo?.best_book?.title,
       user_id,
-      publications,
-      reading_status: type,
+      published,
+      reading_finish_date: this.reading_finish_date,
+      reading_status: this.selectedBookStatus,
       author: this.bookInfo?.best_book?.author.name,
       goodreads_id:
         this.bookInfo?.best_book?.id._ || this.bookInfo?.goodreads_id,
@@ -47,15 +64,20 @@ export class BookCardComponent implements OnInit {
       image_url: this.bookInfo?.best_book?.image_url,
       small_image_url: this.bookInfo?.best_book?.small_image_url,
     };
+    this.addBook(obj);
+  }
 
+  addBook(obj) {
     this.loading = true;
 
     this.userService.addBookToUser(obj).subscribe(
       (response) => {
         console.log("response->", response);
         const title = this.bookInfo?.best_book?.title || this.bookInfo?.title;
-        const msg = `book ${title} successfully added to ${type}`;
+        const msg = `book ${title} successfully added to ${this.selectedBookStatus}`;
         this.helperService.createMessage("success", msg);
+
+        this.handleCancelFinishDateModal();
         this.loading = false;
         this.output.emit(null);
       },
@@ -65,5 +87,16 @@ export class BookCardComponent implements OnInit {
         this.loading = false;
       }
     );
+  }
+
+  openFinishDateModal() {
+    this.finishDateVisible = true;
+  }
+  handleCancelFinishDateModal() {
+    this.finishDateVisible = false;
+  }
+  handleOkFinishDateModal() {
+    this.finishDateLoading = true;
+    this.createApiData();
   }
 }

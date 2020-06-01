@@ -87,3 +87,18 @@
     </div>
   </div>
 </div>
+
+<nz-modal
+  [(nzVisible)]="finishDateVisible"
+  *ngIf="finishDateVisible"
+  [nzOkLoading]="finishDateLoading"
+  nzTitle="When did you finish this book?"
+  (nzOnCancel)="handleCancelFinishDateModal()"
+  (nzOnOk)="handleOkFinishDateModal()"
+>
+  <nz-date-picker
+    [nzSize]="'medium'"
+    name="finish-date"
+    [(ngModel)]="reading_finish_date"
+  ></nz-date-picker>
+</nz-modal>

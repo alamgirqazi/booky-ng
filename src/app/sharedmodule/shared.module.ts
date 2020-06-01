@@ -14,6 +14,8 @@ import { NzRadioModule } from "ng-zorro-antd/radio";
 import { NzBadgeModule } from "ng-zorro-antd/badge";
 import { NzResultModule } from "ng-zorro-antd/result";
 import { NzSkeletonModule } from "ng-zorro-antd/skeleton";
+import { NzModalModule } from "ng-zorro-antd/modal";
+import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
 
 @NgModule({
   declarations: [BookCardComponent],
@@ -30,6 +32,8 @@ import { NzSkeletonModule } from "ng-zorro-antd/skeleton";
     NzAvatarModule,
     NzBadgeModule,
     NzResultModule,
+    NzDatePickerModule,
+    NzModalModule,
     NzSkeletonModule,
   ],
   exports: [
