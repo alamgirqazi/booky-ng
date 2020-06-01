@@ -34,6 +34,13 @@
     </shared-book-card>
   </div>
 </div>
+
+<div class="books-container" *ngIf="loading && !bookResults.length">
+  <div *ngFor="let item of skeletonItems; let i = index">
+    <nz-skeleton [nzActive]="true"></nz-skeleton>
+  </div>
+</div>
+
 <div
   nz-row
   [nzGutter]="16"

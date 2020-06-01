@@ -13,6 +13,7 @@ import { NzAvatarModule } from "ng-zorro-antd/avatar";
 import { NzRadioModule } from "ng-zorro-antd/radio";
 import { NzBadgeModule } from "ng-zorro-antd/badge";
 import { NzResultModule } from "ng-zorro-antd/result";
+import { NzSkeletonModule } from "ng-zorro-antd/skeleton";
 
 @NgModule({
   declarations: [BookCardComponent],
@@ -29,6 +30,7 @@ import { NzResultModule } from "ng-zorro-antd/result";
     NzAvatarModule,
     NzBadgeModule,
     NzResultModule,
+    NzSkeletonModule,
   ],
   exports: [
     BookCardComponent,
@@ -36,6 +38,7 @@ import { NzResultModule } from "ng-zorro-antd/result";
     NzAvatarModule,
     NzRadioModule,
     NzBadgeModule,
+    NzSkeletonModule,
     NzResultModule,
   ],
 })

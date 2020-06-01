@@ -11,7 +11,7 @@ export class HomeSearchComponent implements OnInit {
   searchValue = "";
   loading = false;
   bookResults = [];
-
+  skeletonItems = [1, 2, 3, 4, 5, 6];
   ngOnInit(): void {
     this.applySearch();
   }

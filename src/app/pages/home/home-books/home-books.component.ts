@@ -46,6 +46,7 @@ export class HomeBooksComponent implements OnInit {
   constructor(private userService: UserService) {}
   loading = false;
   bookResults = [];
+  skeletonItems = [1, 2, 3];
   displaybookResults = [];
   selectedType = "All";
   lastEvent;

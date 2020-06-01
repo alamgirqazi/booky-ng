@@ -11,15 +11,15 @@ import { NZ_I18N } from "ng-zorro-antd/i18n";
 import { en_US } from "ng-zorro-antd/i18n";
 import { registerLocaleData } from "@angular/common";
 import en from "@angular/common/locales/en";
-import { LandingPageComponent } from "./pages/home/landingpage/landingpage.component";
-import { LoginComponent } from "./pages/home/login/login.component";
-import { SignupComponent } from "./pages/home/signup/signup.component";
 import { NzInputModule } from "ng-zorro-antd/input";
 import { NzSpinModule } from "ng-zorro-antd/spin";
 import { NzFormModule } from "ng-zorro-antd/form";
 import { NzButtonModule } from "ng-zorro-antd/button";
 import { NzIconModule } from "ng-zorro-antd/icon";
 import { NzMessageModule } from "ng-zorro-antd/message";
+import { LandingPageComponent } from "./pages/landingpage/landingpage.component";
+import { LoginComponent } from "./pages/login/login.component";
+import { SignupComponent } from "./pages/signup/signup.component";
 
 registerLocaleData(en);
 
