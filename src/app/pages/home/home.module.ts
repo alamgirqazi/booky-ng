@@ -18,7 +18,8 @@ import { HomeAnalyticsComponent } from "./home-analytics/home-analytics.componen
 import { HomeSettingsComponent } from "./home-settings/home-settings.component";
 import { HomeBooksComponent } from "./home-books/home-books.component";
 import { DragDropModule } from "@angular/cdk/drag-drop";
-import { NzDropDownModule } from "ng-zorro-antd/dropdown";
+import { NzSwitchModule } from "ng-zorro-antd/switch";
+import { NzTableModule } from "ng-zorro-antd/table";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { NzDropDownModule } from "ng-zorro-antd/dropdown";
     SharedModule,
     NzLayoutModule,
     NzButtonModule,
-    // NzDropDownModule,
+    NzSwitchModule,
     FormsModule,
     DragDropModule,
     NzMenuModule,
@@ -42,7 +43,7 @@ import { NzDropDownModule } from "ng-zorro-antd/dropdown";
     NzInputModule,
     IconsProviderModule,
     NzPageHeaderModule,
-
+    NzTableModule,
     HomeRoutingModule,
   ],
 })

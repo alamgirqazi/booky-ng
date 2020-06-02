@@ -18,7 +18,7 @@ import { NzModalModule } from "ng-zorro-antd/modal";
 import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
 import { NzGridModule } from "ng-zorro-antd/grid";
 import { NzTimelineModule } from "ng-zorro-antd/timeline";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NzSelectModule } from "ng-zorro-antd/select";
 
 @NgModule({
   declarations: [BookCardComponent],
@@ -40,6 +40,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     NzModalModule,
     NzSkeletonModule,
     NzTimelineModule,
+    NzSelectModule,
   ],
   exports: [
     BookCardComponent,
@@ -50,6 +51,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     NzBadgeModule,
     NzSkeletonModule,
     NzResultModule,
+    NzSelectModule,
   ],
 })
 export class SharedModule {}

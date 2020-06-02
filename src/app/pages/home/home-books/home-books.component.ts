@@ -45,6 +45,9 @@ const listAnimation = trigger("listAnimation", [
 export class HomeBooksComponent implements OnInit {
   constructor(private userService: UserService) {}
   loading = false;
+  gridView = true;
+  search_name;
+  statusBooks = "all";
   bookResults = [];
   skeletonItems = [1, 2, 3];
   displaybookResults = [];
@@ -75,6 +78,8 @@ export class HomeBooksComponent implements OnInit {
       }
     );
   }
+
+  search() {}
 
   filterChanged(e) {
     this.lastEvent = e;
