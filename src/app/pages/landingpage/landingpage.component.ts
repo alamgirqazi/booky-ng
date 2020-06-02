@@ -20,10 +20,11 @@ export class LandingPageComponent implements OnInit {
     var toToggle = document.querySelectorAll(".toggleColour");
 
     document.onclick = (e) => {
-      this.check(e);
+      // this.check(e);
     };
 
     document.addEventListener("scroll", function () {
+      console.log("asdasdasdasd");
       /*Apply classes for slide in bar*/
       scrollpos = window.scrollY;
 
@@ -60,6 +61,8 @@ export class LandingPageComponent implements OnInit {
     });
   }
   check(e) {
+    console.log("checksdasdas");
+
     var navMenuDiv = document.getElementById("nav-content");
     var navMenu = document.getElementById("nav-toggle");
     var target = (e && e.target) || (event && event.srcElement);

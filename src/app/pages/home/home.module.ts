@@ -31,6 +31,7 @@ import { NzDropDownModule } from "ng-zorro-antd/dropdown";
   ],
   imports: [
     CommonModule,
+    SharedModule,
     NzLayoutModule,
     NzButtonModule,
     // NzDropDownModule,
@@ -41,7 +42,7 @@ import { NzDropDownModule } from "ng-zorro-antd/dropdown";
     NzInputModule,
     IconsProviderModule,
     NzPageHeaderModule,
-    SharedModule,
+
     HomeRoutingModule,
   ],
 })

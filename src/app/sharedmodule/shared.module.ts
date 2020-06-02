@@ -18,6 +18,7 @@ import { NzModalModule } from "ng-zorro-antd/modal";
 import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
 import { NzGridModule } from "ng-zorro-antd/grid";
 import { NzTimelineModule } from "ng-zorro-antd/timeline";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [BookCardComponent],

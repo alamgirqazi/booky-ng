@@ -92,7 +92,6 @@
 
 <nz-modal
   [(nzVisible)]="finishDateVisible"
-  *ngIf="finishDateVisible"
   [nzOkLoading]="finishDateLoading"
   nzTitle="When did you finish this book?"
   (nzOnCancel)="handleCancelFinishDateModal()"
@@ -107,7 +106,6 @@
 
 <nz-modal
   [(nzVisible)]="fullDisplayVisible"
-  *ngIf="fullDisplayVisible"
   nzTitle="Details"
   nzWidth="820"
   (nzOnCancel)="handleCancelfullDisplayModal()"
