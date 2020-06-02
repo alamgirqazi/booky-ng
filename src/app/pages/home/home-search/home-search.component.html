@@ -33,7 +33,8 @@
 
 <div class="books-container" *ngIf="!loading && bookResults.length">
   <div *ngFor="let item of bookResults; let i = index">
-    <shared-book-card [bookInfo]="item"> </shared-book-card>
+    <shared-book-card [bookInfo]="item" [userDisplay]="false">
+    </shared-book-card>
   </div>
 </div>
 <div class="books-container" *ngIf="loading">

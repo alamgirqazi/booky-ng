@@ -116,6 +116,9 @@ export class BookCardComponent implements OnInit {
     this.createApiData();
   }
   openfullDisplayVisibleModal() {
+    if (!this.userDisplay) {
+      return;
+    }
     this.fullDisplayVisible = true;
   }
   handleCancelfullDisplayModal() {

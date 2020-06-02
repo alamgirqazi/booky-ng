@@ -7,6 +7,13 @@ import { Component, OnInit } from "@angular/core";
 })
 export class HomeAnalyticsComponent implements OnInit {
   constructor() {}
-
+  isVisible = false;
   ngOnInit(): void {}
+
+  closeModal() {
+    this.isVisible = false;
+  }
+  showModal() {
+    this.isVisible = true;
+  }
 }

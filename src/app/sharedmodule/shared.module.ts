@@ -44,6 +44,7 @@ import { NzTimelineModule } from "ng-zorro-antd/timeline";
     BookCardComponent,
     NzDropDownModule,
     NzAvatarModule,
+    NzModalModule,
     NzRadioModule,
     NzBadgeModule,
     NzSkeletonModule,
