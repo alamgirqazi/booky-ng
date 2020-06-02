@@ -16,12 +16,15 @@ import { NzResultModule } from "ng-zorro-antd/result";
 import { NzSkeletonModule } from "ng-zorro-antd/skeleton";
 import { NzModalModule } from "ng-zorro-antd/modal";
 import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
+import { NzGridModule } from "ng-zorro-antd/grid";
+import { NzTimelineModule } from "ng-zorro-antd/timeline";
 
 @NgModule({
   declarations: [BookCardComponent],
   imports: [
     CommonModule,
     FormsModule,
+    NzGridModule,
     NzLayoutModule,
     NzMenuModule,
     NzCardModule,
@@ -35,6 +38,7 @@ import { NzDatePickerModule } from "ng-zorro-antd/date-picker";
     NzDatePickerModule,
     NzModalModule,
     NzSkeletonModule,
+    NzTimelineModule,
   ],
   exports: [
     BookCardComponent,

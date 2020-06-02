@@ -37,55 +37,57 @@
     </ul>
   </nz-dropdown-menu>
 
-  <div
-    class="ribbon"
-    *ngIf="showRibbon"
-    [ngClass]="{
-      'blue-ribbon': bookInfo?.reading_status === 'currently-reading',
-      'orange-ribbon': bookInfo?.reading_status === 'read-it-later',
-      'green-ribbon': bookInfo?.reading_status === 'read'
-    }"
-  >
-    <span *ngIf="bookInfo?.reading_status === 'currently-reading'">
-      Currently Reading
-    </span>
-    <span *ngIf="bookInfo?.reading_status === 'read-it-later'">
-      Read It Later
-    </span>
-    <span *ngIf="bookInfo?.reading_status === 'read'"> Read </span>
-  </div>
+  <a (click)="openfullDisplayVisibleModal()">
+    <div
+      class="ribbon"
+      *ngIf="showRibbon"
+      [ngClass]="{
+        'blue-ribbon': bookInfo?.reading_status === 'currently-reading',
+        'orange-ribbon': bookInfo?.reading_status === 'read-it-later',
+        'green-ribbon': bookInfo?.reading_status === 'read'
+      }"
+    >
+      <span *ngIf="bookInfo?.reading_status === 'currently-reading'">
+        Currently Reading
+      </span>
+      <span *ngIf="bookInfo?.reading_status === 'read-it-later'">
+        Read It Later
+      </span>
+      <span *ngIf="bookInfo?.reading_status === 'read'"> Read </span>
+    </div>
 
-  <div class="md:flex grid-card p-6">
-    <img
-      class="h-16 w-16 md:h-24 md:w-24 mx-auto md:mx-0 md:mr-6"
-      [src]="bookInfo?.best_book?.image_url || bookInfo?.image_url"
-    />
-    <div class="text-center md:text-left" style="z-index: 1;">
-      <h4 class="text-lg">
-        <span> {{ bookInfo?.best_book?.title || bookInfo?.title }} </span>
-        <!-- <span *ngIf="!goodreadData"> {{ bookInfo?.title }} </span> -->
-      </h4>
+    <div class="md:flex grid-card p-6">
+      <img
+        class="h-16 w-16 md:h-24 md:w-24 mx-auto md:mx-0 md:mr-6"
+        [src]="bookInfo?.best_book?.image_url || bookInfo?.image_url"
+      />
+      <div class="text-center md:text-left" style="z-index: 1;">
+        <h4 class="text-lg">
+          <span> {{ bookInfo?.best_book?.title || bookInfo?.title }} </span>
+          <!-- <span *ngIf="!goodreadData"> {{ bookInfo?.title }} </span> -->
+        </h4>
+      </div>
     </div>
-  </div>
-  <div class="mx-auto md:mx-0 md:mr-6 pl-6">
-    <div class="text-gray-600">
-      Rating:
-      <nz-rate
-        nzDisabled
-        [ngModel]="
-          bookInfo?.average_rating || bookInfo?.goodreads_average_rating
-        "
-        nzAllowHalf
-      ></nz-rate>
-      {{ bookInfo?.average_rating || bookInfo?.goodreads_average_rating }}
+    <div class="mx-auto md:mx-0 md:mr-6 pl-6">
+      <div class="text-gray-600">
+        Rating:
+        <nz-rate
+          nzDisabled
+          [ngModel]="
+            bookInfo?.average_rating || bookInfo?.goodreads_average_rating
+          "
+          nzAllowHalf
+        ></nz-rate>
+        {{ bookInfo?.average_rating || bookInfo?.goodreads_average_rating }}
+      </div>
+      <div class="pt-6">
+        <strong>Author: </strong>
+        <span class="text-gray-600">
+          {{ bookInfo?.best_book?.author?.name || bookInfo?.author }}</span
+        >
+      </div>
     </div>
-    <div class="pt-6">
-      <strong>Author: </strong>
-      <span class="text-gray-600">
-        {{ bookInfo?.best_book?.author?.name || bookInfo?.author }}</span
-      >
-    </div>
-  </div>
+  </a>
 </div>
 
 <nz-modal
@@ -101,4 +103,65 @@
     name="finish-date"
     [(ngModel)]="reading_finish_date"
   ></nz-date-picker>
+</nz-modal>
+
+<nz-modal
+  [(nzVisible)]="fullDisplayVisible"
+  *ngIf="fullDisplayVisible"
+  nzTitle="Details"
+  nzWidth="820"
+  (nzOnCancel)="handleCancelfullDisplayModal()"
+  (nzOnOk)="handleOkfullDisplayModal()"
+>
+  <div nz-row [nzGutter]="16">
+    <div nz-col class="gutter-row" [nzSpan]="12">
+      <div class="md:flex grid-card p-6">
+        <img
+          class="h-16 w-16 md:h-24 md:w-24 mx-auto md:mx-0 md:mr-6"
+          [src]="bookInfo?.best_book?.image_url || bookInfo?.image_url"
+        />
+      </div>
+      <div class="mx-auto md:mx-0 md:mr-6 pl-6">
+        <div class="text-center md:text-left" style="z-index: 1;">
+          <h4 class="text-lg">
+            <span> {{ bookInfo?.best_book?.title || bookInfo?.title }} </span>
+            <!-- <span *ngIf="!goodreadData"> {{ bookInfo?.title }} </span> -->
+          </h4>
+        </div>
+
+        <div class="text-gray-600">
+          Rating:
+          <nz-rate
+            nzDisabled
+            [ngModel]="
+              bookInfo?.average_rating || bookInfo?.goodreads_average_rating
+            "
+            nzAllowHalf
+          ></nz-rate>
+          {{ bookInfo?.average_rating || bookInfo?.goodreads_average_rating }}
+        </div>
+        <div class="pt-6">
+          <strong>Author: </strong>
+          <span class="text-gray-600">
+            {{ bookInfo?.best_book?.author?.name || bookInfo?.author }}</span
+          >
+        </div>
+      </div>
+    </div>
+    <div nz-col class="gutter-row" [nzSpan]="12">
+      <h5>Reading Timeline</h5>
+      <br />
+      <!-- nzMode="alternate" -->
+      <nz-timeline [nzReverse]="true">
+        <nz-timeline-item
+          *ngFor="let item of bookInfo?.timeline"
+          nzColor="{{ getNzColor(item) }}"
+          >{{ item.status }}
+          <span *ngIf="item.date">
+            - ({{ item.date | date: "mediumDate" }})</span
+          >
+        </nz-timeline-item>
+      </nz-timeline>
+    </div>
+  </div>
 </nz-modal>

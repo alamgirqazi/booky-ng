@@ -25,6 +25,7 @@ export class BookCardComponent implements OnInit {
   loading = false;
   reading_finish_date;
   finishDateVisible = false;
+  fullDisplayVisible = false;
   selectedBookStatus: bookStatusTypes;
   finishDateLoading = false;
 
@@ -89,6 +90,21 @@ export class BookCardComponent implements OnInit {
     );
   }
 
+  // :TODO: optimize this later !
+  getNzColor(item) {
+    if (item.status === "currently-reading") {
+      return "#21afdd";
+    }
+    if (item.status === "read-it-later") {
+      return "orange";
+    }
+    if (item.status === "read") {
+      return "#52c41a";
+    } else {
+      return "#52c41a";
+    }
+  }
+
   openFinishDateModal() {
     this.finishDateVisible = true;
   }
@@ -98,5 +114,14 @@ export class BookCardComponent implements OnInit {
   handleOkFinishDateModal() {
     this.finishDateLoading = true;
     this.createApiData();
+  }
+  openfullDisplayVisibleModal() {
+    this.fullDisplayVisible = true;
+  }
+  handleCancelfullDisplayModal() {
+    this.fullDisplayVisible = false;
+  }
+  handleOkfullDisplayModal() {
+    this.fullDisplayVisible = false;
   }
 }
