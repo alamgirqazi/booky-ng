@@ -1,13 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { UserService } from "src/sdk/services/user.service";
 import {
-  trigger,
-  transition,
-  style,
   animate,
   query,
   stagger,
+  style,
+  transition,
+  trigger,
 } from "@angular/animations";
+
+import { UserService } from "src/sdk/services/user.service";
 
 export const fadeAnimation = trigger("fadeAnimation", [
   transition(":enter", [
@@ -45,7 +46,7 @@ const listAnimation = trigger("listAnimation", [
 export class HomeBooksComponent implements OnInit {
   constructor(private userService: UserService) {}
   loading = false;
-  gridView = true;
+  listView = true;
   search_name;
   statusBooks = "all";
   bookResults = [];

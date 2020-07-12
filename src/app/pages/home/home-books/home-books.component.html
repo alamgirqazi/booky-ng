@@ -1,13 +1,13 @@
 <nz-switch
-  [(ngModel)]="gridView"
-  nzCheckedChildren="Grid View"
-  nzUnCheckedChildren="Table View"
+  [(ngModel)]="listView"
+  nzCheckedChildren="List View"
+  nzUnCheckedChildren="Grid View"
 ></nz-switch>
 
 <br />
 <br />
 
-<div nz-row [nzGutter]="16" *ngIf="bookResults?.length && gridView">
+<div nz-row [nzGutter]="16" *ngIf="bookResults?.length">
   <div nz-col class="gutter-row" [nzSpan]="24">
     <nz-radio-group
       name="filter"
@@ -32,80 +32,34 @@
   <br />
 </div>
 
-<div class="books-container" *ngIf="gridView">
+<div class="container" *ngIf="listView">
   <div *ngFor="let item of displaybookResults; let i = index">
     <shared-book-card
-      (output)="updateList()"
       [bookInfo]="item"
-      [userDisplay]="true"
+      [listView]="listView"
       [showRibbon]="true"
     >
     </shared-book-card>
   </div>
 </div>
-
-<div *ngIf="!gridView && bookResults?.length">
-  <nz-page-header [nzGhost]="false">
-    <nz-page-header-title>Table View</nz-page-header-title>
-    <!-- <nz-page-header-subtitle>This is a subtitle</nz-page-header-subtitle> -->
-    <nz-page-header-content class="display-flex">
-      <nz-input-group
-        nzSearch
-        class="search flex-item"
-        [nzAddOnAfter]="suffixIconButton"
+<div class="container" *ngIf="!listView">
+  <div class="flex flex-wrap -mx-1 lg:-mx-4">
+    <div *ngFor="let item of displaybookResults; let i = index">
+      <shared-book-card
+        [bookInfo]="item"
+        [listView]="listView"
+        [showRibbon]="true"
       >
-        <input
-          type="text"
-          [(ngModel)]="search_name"
-          nz-input
-          placeholder="search by book name"
-        />
-      </nz-input-group>
-      <ng-template #suffixIconButton>
-        <button nz-button nzType="primary" (click)="search()" nzSearch>
-          <i nz-icon nzType="search"></i>
-        </button>
-      </ng-template>
-
-      <nz-select class="status-select flex-item" [(ngModel)]="statusBooks">
-        <!-- (ngModelChange)="changedType($event)" -->
-
-        <nz-option nzValue="all" nzLabel="all"></nz-option>
-        <nz-option nzValue="pending" nzLabel="pending"></nz-option>
-        <nz-option nzValue="complete" nzLabel="complete"></nz-option>
-        <nz-option nzValue="cancelled" nzLabel="cancelled"></nz-option>
-      </nz-select>
-    </nz-page-header-content>
-  </nz-page-header>
-
-  <nz-table #basicTable [nzData]="bookResults">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.title }}</td>
-        <td>
-          <span
-            class="status"
-            [class.green]="data.status === 'complete'"
-            [class.black]="data.status === 'cancelled'"
-            [class.orange]="data.status === 'pending'"
-            >{{ data.status }}</span
-          >
-        </td>
-        <td></td>
-      </tr>
-    </tbody>
-  </nz-table>
+      </shared-book-card>
+    </div>
+  </div>
 </div>
 
-<div class="books-container" *ngIf="loading && !bookResults.length">
-  <div *ngFor="let item of skeletonItems; let i = index">
+<div *ngIf="loading && !displaybookResults.length">
+  <div
+    *ngFor="let item of skeletonItems; let i = index"
+    class="max-w-sm w-full mt-2 mb-2 lg:max-w-full lg:flex"
+  >
     <nz-skeleton [nzActive]="true"></nz-skeleton>
   </div>
 </div>
@@ -132,6 +86,8 @@
 <div nz-row [nzGutter]="16" *ngIf="!loading && bookResults.length === 0">
   <div nz-col class="gutter-row" [nzSpan]="4"></div>
   <div nz-col class="gutter-row" [nzSpan]="16">
+    <br />
+    <br />
     <nz-result
       [nzIcon]="'smile-twotone'"
       [nzTitle]="

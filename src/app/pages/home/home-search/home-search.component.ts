@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+
 import { BooksService } from "src/sdk/services/books.service";
 
 @Component({
@@ -11,6 +12,7 @@ export class HomeSearchComponent implements OnInit {
   searchValue = "";
   loading = false;
   bookResults = [];
+  listView = true;
   skeletonItems = [1, 2, 3, 4, 5, 6];
   ngOnInit(): void {
     this.applySearch();
@@ -18,7 +20,7 @@ export class HomeSearchComponent implements OnInit {
   applySearch() {
     console.log("apply search!");
     this.loading = true;
-    this.booksService.findBookByTitle(this.searchValue).subscribe(
+    this.booksService.findBookByTitle(this.searchValue || "rowling").subscribe(
       (response) => {
         console.log("response->", response);
         this.loading = false;

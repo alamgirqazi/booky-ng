@@ -18,6 +18,7 @@ export class BookCardComponent implements OnInit {
   ) {}
   @Input() bookInfo;
   @Input() userDisplay = false;
+  @Input() listView = true;
   @Input() goodreadData = true;
   @Input() showRibbon = false;
   @Output() output = new EventEmitter();

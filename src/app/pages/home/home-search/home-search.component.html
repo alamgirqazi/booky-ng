@@ -1,4 +1,12 @@
 <!-- <nz-page-header (nzBack)="onBack()" nzBackIcon nzTitle="Back"> </nz-page-header> -->
+<nz-switch
+  [(ngModel)]="listView"
+  nzCheckedChildren="List View"
+  nzUnCheckedChildren="Grid View"
+></nz-switch>
+
+<br />
+<br />
 
 <div nz-row [nzGutter]="16">
   <div nz-col class="gutter-row" [nzSpan]="8"></div>
@@ -31,7 +39,39 @@
 <br />
 <br />
 
-<div class="books-container" *ngIf="!loading && bookResults.length">
+<div class="container" *ngIf="listView">
+  <div *ngFor="let item of bookResults; let i = index">
+    <shared-book-card
+      [bookInfo]="item"
+      [listView]="listView"
+      [showRibbon]="true"
+    >
+    </shared-book-card>
+  </div>
+</div>
+<div class="container" *ngIf="!listView">
+  <div class="flex flex-wrap -mx-1 lg:-mx-4">
+    <div *ngFor="let item of bookResults; let i = index">
+      <shared-book-card
+        [bookInfo]="item"
+        [listView]="listView"
+        [showRibbon]="true"
+      >
+      </shared-book-card>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading && !bookResults.length">
+  <div
+    *ngFor="let item of skeletonItems; let i = index"
+    class="max-w-sm w-full mt-2 mb-2 lg:max-w-full lg:flex"
+  >
+    <nz-skeleton [nzActive]="true"></nz-skeleton>
+  </div>
+</div>
+
+<!-- <div class="books-container" *ngIf="!loading && bookResults.length">
   <div *ngFor="let item of bookResults; let i = index">
     <shared-book-card [bookInfo]="item" [userDisplay]="false">
     </shared-book-card>
@@ -41,4 +81,4 @@
   <div *ngFor="let item of skeletonItems; let i = index">
     <nz-skeleton [nzActive]="true"></nz-skeleton>
   </div>
-</div>
+</div> -->

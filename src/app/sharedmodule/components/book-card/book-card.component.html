@@ -1,4 +1,189 @@
-<div class="bg-white book-card ribbon-parent">
+<div *ngIf="listView">
+  <div class="max-w-sm w-full lg:max-w-full lg:flex" style="margin: 10px 0px;">
+    <div
+      class="h-48 ribbon-parent lg:h-auto lg:w-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+      style="
+        background-image: url({{
+        bookInfo?.best_book?.image_url || bookInfo?.image_url
+      }})"
+      title="{{ bookInfo?.title }}"
+    ></div>
+
+    <div
+      class="border-r border-b w-full border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-3 flex flex-col justify-between leading-normal"
+    >
+      <div class="">
+        <div class="text-gray-900 font-bold text-xl mb-2">
+          {{ bookInfo?.best_book?.title || bookInfo?.title }}
+          <div style="float: right;">
+            <p class="text-base" *ngIf="showRibbon">
+              <span
+                [ngClass]="{
+                  'blue-status':
+                    bookInfo?.reading_status === 'currently-reading',
+                  'orange-status': bookInfo?.reading_status === 'read-it-later',
+                  'green-status': bookInfo?.reading_status === 'read'
+                }"
+                class="inline-block status-text bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+              >
+                <span *ngIf="bookInfo?.reading_status === 'currently-reading'">
+                  Currently Reading
+                </span>
+                <span *ngIf="bookInfo?.reading_status === 'read-it-later'">
+                  Read It Later
+                </span>
+                <span *ngIf="bookInfo?.reading_status === 'read'">
+                  Read
+                </span></span
+              >
+            </p>
+          </div>
+        </div>
+
+        <p class="text-sm text-gray-600 flex items-center">
+          <i class="mr-2" nz-icon nzType="clock-circle" nzTheme="outline"></i>
+          {{ bookInfo?.best_book?.author?.name || bookInfo?.author }}
+        </p>
+      </div>
+      <div class="flex items-center justify-end top-auto px-3 py-3">
+        <button
+          class=""
+          nz-button
+          nzType="default"
+          nz-dropdown
+          [nzDropdownMenu]="menu"
+        >
+          Add to Library<i nz-icon nzType="down"></i>
+        </button>
+
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu>
+            <li
+              nz-menu-item
+              (click)="addBookToUser('read')"
+              *ngIf="
+                (userDisplay && bookInfo?.reading_status !== 'read') ||
+                !userDisplay
+              "
+            >
+              Read
+            </li>
+            <li
+              nz-menu-item
+              (click)="addBookToUser('currently-reading')"
+              *ngIf="
+                (userDisplay &&
+                  bookInfo?.reading_status !== 'currently-reading') ||
+                !userDisplay
+              "
+            >
+              Currently Reading
+            </li>
+            <li
+              nz-menu-item
+              (click)="addBookToUser('read-it-later')"
+              *ngIf="
+                (userDisplay && bookInfo?.reading_status !== 'read-it-later') ||
+                !userDisplay
+              "
+            >
+              Read It Later
+            </li>
+          </ul>
+        </nz-dropdown-menu>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!listView" class="px-3 py-3 pr-0">
+  <div class="max-w-xsm gridview rounded overflow-hidden shadow-lg">
+    <img
+      class="w-full"
+      src="{{ bookInfo?.best_book?.image_url || bookInfo?.image_url }}"
+      alt="Sunset in the mountains"
+    />
+    <div class="px-2 py-2">
+      <div class="font-bold text-xl mb-2">
+        {{ bookInfo?.best_book?.title || bookInfo?.title | truncate: 60 }}
+      </div>
+      <p class="text-sm text-gray-600 flex items-center">
+        <i class="mr-2" nz-icon nzType="clock-circle" nzTheme="outline"></i>
+        {{ bookInfo?.best_book?.author?.name || bookInfo?.author }}
+      </p>
+    </div>
+    <div class="flex justify-center" *ngIf="showRibbon">
+      <p class="text-base">
+        <span
+          [ngClass]="{
+            'blue-status': bookInfo?.reading_status === 'currently-reading',
+            'orange-status': bookInfo?.reading_status === 'read-it-later',
+            'green-status': bookInfo?.reading_status === 'read'
+          }"
+          class="inline-block status-text bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+        >
+          <span *ngIf="bookInfo?.reading_status === 'currently-reading'">
+            Currently Reading
+          </span>
+          <span *ngIf="bookInfo?.reading_status === 'read-it-later'">
+            Read It Later
+          </span>
+          <span *ngIf="bookInfo?.reading_status === 'read'">
+            Read
+          </span></span
+        >
+      </p>
+    </div>
+    <div class="flex justify-center top-auto px-3 py-3">
+      <button
+        class="text-gray-200 px-2 py-2 rounded-md"
+        nz-button
+        nz-dropdown
+        [nzDropdownMenu]="menu"
+      >
+        Add to Library<i nz-icon nzType="down"></i>
+      </button>
+
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu>
+          <li
+            nz-menu-item
+            (click)="addBookToUser('read')"
+            *ngIf="
+              (userDisplay && bookInfo?.reading_status !== 'read') ||
+              !userDisplay
+            "
+          >
+            Read
+          </li>
+          <li
+            nz-menu-item
+            (click)="addBookToUser('currently-reading')"
+            *ngIf="
+              (userDisplay &&
+                bookInfo?.reading_status !== 'currently-reading') ||
+              !userDisplay
+            "
+          >
+            Currently Reading
+          </li>
+          <li
+            nz-menu-item
+            (click)="addBookToUser('read-it-later')"
+            *ngIf="
+              (userDisplay && bookInfo?.reading_status !== 'read-it-later') ||
+              !userDisplay
+            "
+          >
+            Read It Later
+          </li>
+        </ul>
+      </nz-dropdown-menu>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="bg-white book-card ribbon-parent">
   <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
     add to
     <i nz-icon nzType="down"></i>
@@ -64,7 +249,6 @@
       <div class="text-center md:text-left" style="z-index: 1;">
         <h4 class="text-lg">
           <span> {{ bookInfo?.best_book?.title || bookInfo?.title }} </span>
-          <!-- <span *ngIf="!goodreadData"> {{ bookInfo?.title }} </span> -->
         </h4>
       </div>
     </div>
@@ -88,7 +272,7 @@
       </div>
     </div>
   </a>
-</div>
+</div> -->
 
 <nz-modal
   [(nzVisible)]="finishDateVisible"

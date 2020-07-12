@@ -18,6 +18,7 @@
 
   position: relative;
 }
+
 .ribbon {
   margin: 0;
   padding: 0;
@@ -36,15 +37,25 @@
   content: "";
   position: absolute;
   top: 0;
-  margin: 0 -1px; /* tweak */
+  margin: 0 -1px;
+  /* tweak */
   width: 100%;
   height: 100%;
   background: #d86e5e;
 }
+
 .ribbon:before {
   right: 100%;
 }
 
 .ribbon:after {
   left: 100%;
+}
+
+.gridview {
+  img {
+
+    max-height: 180px;
+
+  }
 }
