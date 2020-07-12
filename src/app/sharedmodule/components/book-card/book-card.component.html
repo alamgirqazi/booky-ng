@@ -15,8 +15,8 @@
       <div class="">
         <div class="text-gray-900 font-bold text-xl mb-2">
           {{ bookInfo?.best_book?.title || bookInfo?.title }}
-          <div style="float: right;">
-            <p class="text-base" *ngIf="showRibbon">
+          <div style="float: right;" *ngIf="showRibbon">
+            <p class="text-base">
               <span
                 [ngClass]="{
                   'blue-status':
